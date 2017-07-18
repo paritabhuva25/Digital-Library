@@ -29,7 +29,7 @@ public class Edition {
 	
 	@Size(min=3, max=50)
 	@Column(name = "ISBN", nullable = true)
-	private int ISBN;
+	private String ISBN;
 
 	@Size(min=3, max=50)
 	@Column(name = "bookPrice", nullable = true)
@@ -46,7 +46,7 @@ public class Edition {
 	
 	@Size(min=3, max=50)
 	@Column(name = "edition", nullable = true)
-	private String edition;
+	private int edition;
 
 	@Size(min=3, max=50)
 	@Column(name = "rent", nullable = true)
@@ -76,11 +76,11 @@ public class Edition {
 		this.bookID = bookID;
 	}
 
-	public int getISBN() {
+	public String getISBN() {
 		return ISBN;
 	}
 
-	public void setISBN(int iSBN) {
+	public void setISBN(String iSBN) {
 		ISBN = iSBN;
 	}
 
@@ -108,11 +108,11 @@ public class Edition {
 		this.purchaseDate = purchaseDate;
 	}
 
-	public String getEdition() {
+	public int getEdition() {
 		return edition;
 	}
 
-	public void setEdition(String edition) {
+	public void setEdition(int edition) {
 		this.edition = edition;
 	}
 

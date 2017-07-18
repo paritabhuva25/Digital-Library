@@ -41,6 +41,14 @@ public class Book {
 		return bookID;
 	}
 
+	public Book(int bookID, String bookname, int categoryID, int publisherID) {
+		super();
+		this.bookID = bookID;
+		this.bookname = bookname;
+		this.categoryID = categoryID;
+		this.publisherID = publisherID;
+	}
+
 	public void setBookID(int bookID) {
 		this.bookID = bookID;
 	}

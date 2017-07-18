@@ -23,6 +23,11 @@ public class Publisher {
 	@Column(name = "publisherName", nullable = true)
 	private String publisherName;
 
+	public Publisher(String publisherName) {
+		// TODO Auto-generated constructor stub
+		this.publisherName = publisherName;
+	}
+
 	public int getPublisherID() {
 		return publisherID;
 	}

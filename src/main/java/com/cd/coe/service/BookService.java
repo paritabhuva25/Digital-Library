@@ -1,4 +1,5 @@
 package com.cd.coe.service;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +12,17 @@ public interface BookService {
 	
 	//void saveBook(Book Book);
 	
-	public List<Book> listbooks();
+	
 	
 	Book findBook(int bookID);
 	
-	boolean addBook(int bookID,String bookName, String categoryName, String authorName);
-	boolean issueBook(int bookID, int userID);
+	boolean addBook(int bookID,String bookName, String categoryName, String authorName, String publisherName, String isbn, double price, int pages, Date purchaseDate,int edition, double rent, int quantity);
 	
-	boolean returnBook(int bookID, Integer userId);
+	boolean issueBook(int bookID, int edition,int userID, Date issueDate, Date dueDate, double baseRent, int status);
+	
+	boolean returnBook(int bookID, int userID);
+
+	List<Book> listBooks();
 	
 	
 	

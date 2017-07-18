@@ -23,6 +23,11 @@ public class Author {
 	@Column(name = "authorName", nullable = true)
 	private String authorName;
 
+	public Author(String authorName) {
+		this.authorName = authorName;
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getAuthorID() {
 		return authorID;
 	}

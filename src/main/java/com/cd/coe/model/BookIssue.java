@@ -48,11 +48,11 @@ public class BookIssue {
 	
 	@Size(min=3, max=50)
 	@Column(name = "fineAmount", nullable = true)
-	private int fineAmount;
+	private double fineAmount;
 	
 	@Size(min=3, max=50)
 	@Column(name = "baseRent", nullable = true)
-	private int baseRent;
+	private double baseRent;
 
 	@Size(min=3, max=50)
 	@Column(name = "status", nullable = true)
@@ -60,7 +60,7 @@ public class BookIssue {
 
 	@Size(min=3, max=50)
 	@Column(name = "amountPaid", nullable = true)
-	private int amountPaid;
+	private double amountPaid;
 
 	public int getIssueID() {
 		return issueID;
@@ -110,19 +110,19 @@ public class BookIssue {
 		this.returnDate = returnDate;
 	}
 
-	public int getFineAmount() {
+	public double getFineAmount() {
 		return fineAmount;
 	}
 
-	public void setFineAmount(int fineAmount) {
+	public void setFineAmount(double fineAmount) {
 		this.fineAmount = fineAmount;
 	}
 
-	public int getBaseRent() {
+	public double getBaseRent() {
 		return baseRent;
 	}
 
-	public void setBaseRent(int baseRent) {
+	public void setBaseRent(double baseRent) {
 		this.baseRent = baseRent;
 	}
 
@@ -134,11 +134,11 @@ public class BookIssue {
 		this.status = status;
 	}
 
-	public int getAmountPaid() {
+	public double getAmountPaid() {
 		return amountPaid;
 	}
 
-	public void setAmountPaid(int amountPaid) {
+	public void setAmountPaid(double amountPaid) {
 		this.amountPaid = amountPaid;
 	}
 
