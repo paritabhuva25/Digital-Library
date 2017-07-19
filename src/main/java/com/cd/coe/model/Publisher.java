@@ -28,6 +28,10 @@ public class Publisher {
 		this.publisherName = publisherName;
 	}
 
+	public Publisher() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getPublisherID() {
 		return publisherID;
 	}

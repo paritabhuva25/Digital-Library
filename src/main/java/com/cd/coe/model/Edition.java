@@ -50,15 +50,15 @@ public class Edition {
 
 	@Size(min=3, max=50)
 	@Column(name = "rent", nullable = true)
-	private String rent;
+	private double rent;
 
 	@Size(min=3, max=50)
 	@Column(name = "totalQuantity", nullable = true)
-	private String totalQuantity;
+	private int totalQuantity;
 
 	@Size(min=3, max=50)
 	@Column(name = "avaiQuantity", nullable = true)
-	private String avaiQuantity;
+	private int avaiQuantity;
 
 	public int getEditionID() {
 		return editionID;
@@ -81,7 +81,7 @@ public class Edition {
 	}
 
 	public void setISBN(String iSBN) {
-		ISBN = iSBN;
+		this.ISBN = iSBN;
 	}
 
 	public double getBookPrice() {
@@ -116,29 +116,48 @@ public class Edition {
 		this.edition = edition;
 	}
 
-	public String getRent() {
+	public double getRent() {
 		return rent;
 	}
 
-	public void setRent(String rent) {
+	public void setRent(double rent) {
 		this.rent = rent;
 	}
 
-	public String getTotalQuantity() {
+	public int getTotalQuantity() {
 		return totalQuantity;
 	}
 
-	public void setTotalQuantity(String totalQuantity) {
+	public void setTotalQuantity(int totalQuantity) {
 		this.totalQuantity = totalQuantity;
 	}
 
-	public String getAvaiQuantity() {
+	public int getAvaiQuantity() {
 		return avaiQuantity;
 	}
 
-	public void setAvaiQuantity(String avaiQuantity) {
+	public void setAvaiQuantity(int avaiQuantity) {
 		this.avaiQuantity = avaiQuantity;
 	}
+
+	public Edition(int bookID, String iSBN, double bookPrice, int bookPage, Date purchaseDate,
+			int edition, double rent, int totalQuantity, int avaiQuantity) {
+		super();
+		this.bookID = bookID;
+		this.ISBN = iSBN;
+		this.bookPrice = bookPrice;
+		this.bookPage = bookPage;
+		this.purchaseDate = purchaseDate;
+		this.edition = edition;
+		this.rent = rent;
+		this.totalQuantity = totalQuantity;
+		this.avaiQuantity = avaiQuantity;
+	}
+
+	public Edition() {
+		// TODO Auto-generated constructor stub
+	}
+
 	
 	
 

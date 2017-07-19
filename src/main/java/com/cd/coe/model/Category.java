@@ -28,6 +28,10 @@ public class Category {
 		this.categoryName = categoryName;
 	}
 
+	public Category() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getCategoryID() {
 		return categoryID;
 	}

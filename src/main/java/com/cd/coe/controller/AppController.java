@@ -2,6 +2,9 @@ package com.cd.coe.controller;
 
 
 
+import java.util.Date;
+import java.util.Set;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -14,6 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cd.coe.model.User;
+import com.cd.coe.model.Author;
+import com.cd.coe.model.Book;
+import com.cd.coe.model.Category;
+import com.cd.coe.model.Edition;
+import com.cd.coe.model.Publisher;
+import com.cd.coe.service.BookService;
 import com.cd.coe.service.UserService;
 
 
@@ -23,6 +32,8 @@ public class AppController {
 
 	@Autowired
 	UserService service;
+	@Autowired
+	BookService service2;
 	
 	@Autowired
 	MessageSource messageSource;
@@ -93,7 +104,48 @@ public class AppController {
 		return "redirect:/login";
 	}
 
-
+	@RequestMapping(value = { "/add-book" }, method = RequestMethod.GET)
+	public String newBook(ModelMap model) {
+		Book book= new Book();
+		Publisher p = new Publisher();
+		Category c = new Category();
+		Edition e = new Edition();
+		model.addAttribute("book", book);
+		model.addAttribute("publisher", p);
+		model.addAttribute("category", c);
+		model.addAttribute("edition", e);
+		return "add-book";
+	}
 	
+	@RequestMapping(value = { "/add-book" }, method = RequestMethod.POST)
+	public String saveBook(@Valid Book book,@Valid Publisher p,@Valid Edition e,@Valid Category c, BindingResult result,
+			ModelMap model) {
+
+		if (result.hasErrors()) {
+			return "fail-add-book";
+		}
+
+		//int bookID,String bookName, String categoryName, Set<Author> authors1, String publisherName,
+		//String isbn, double price, int pages, Date purchaseDate, int edition, double rent, int quantity
+		boolean bookAdded = service2.addBook(book.getBookID(),book.getBookname(),c.getCategoryName(),book.getAuthors(),p.getPublisherName()
+										,e.getISBN(),e.getBookPrice(),e.getBookPage(),e.getPurchaseDate(),e.getEdition(),e.getRent(),e.getTotalQuantity());
+
+		if(bookAdded){
+//			model.put("user", user);
+			System.out.println("Success!!!!");
+			return "success-add-book";
+		}else{
+			System.out.println("Failure!!!!");
+			//String msg = "Incorrect User!";
+			//request.setAttribute("error-msg", msg);
+			//request.setAttribute("error", Boolean.TRUE);
+			//model.put("error", msg);
+			return "fail-add-book";
+		}
+	}
+
+
+
+
 
 }

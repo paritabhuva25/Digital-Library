@@ -1,9 +1,11 @@
 package com.cd.coe.service;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.cd.coe.model.Author;
 import com.cd.coe.model.Book;
 
 
@@ -16,7 +18,8 @@ public interface BookService {
 	
 	Book findBook(int bookID);
 	
-	boolean addBook(int bookID,String bookName, String categoryName, String authorName, String publisherName, String isbn, double price, int pages, Date purchaseDate,int edition, double rent, int quantity);
+	boolean addBook(int bookID,String bookName, String categoryName, Set<Author> authors1, String publisherName,
+			String isbn, double price, int pages, Date purchaseDate, int edition, double rent, int quantity);
 	
 	boolean issueBook(int bookID, int edition,int userID, Date issueDate, Date dueDate, double baseRent, int status);
 	

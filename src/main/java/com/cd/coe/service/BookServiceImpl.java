@@ -2,10 +2,12 @@ package com.cd.coe.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.cd.coe.dao.BookDao;
+import com.cd.coe.model.Author;
 import com.cd.coe.model.Book;
 
 @Service("bookService")
@@ -24,11 +26,11 @@ public class BookServiceImpl implements BookService{
 		return dao.findBook(bookID);
 	}
 
-	public boolean addBook(int bookID, String bookName, String categoryName, String authorName, String publisherName,
+	public boolean addBook(int bookID,String bookName, String categoryName, Set<Author> authors1, String publisherName,
 			String isbn, double price, int pages, Date purchaseDate, int edition, double rent, int quantity) {
 		// TODO Auto-generated method stub
 		
-		dao.addBook(bookID,bookName, categoryName, authorName,publisherName,
+		dao.addBook(bookID,bookName, categoryName,authors1,  publisherName,
 				isbn, price,pages,purchaseDate,edition,  rent,  quantity);
 		return true;
 	}
