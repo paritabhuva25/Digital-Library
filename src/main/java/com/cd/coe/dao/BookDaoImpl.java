@@ -109,13 +109,13 @@ public class BookDaoImpl implements BookDao {
 			return ed == null;
 	}
 
-	public boolean addBook(int bookID,String bookName, String categoryName, Set<Author> authors1, String publisherName,
+	public boolean addBook(String bookName, String categoryName, Set<Author> authors1, String publisherName,
 			String isbn, double price, int pages, Date purchaseDate, int edition, double rent, int quantity) {
 		// TODO Auto-generated method stub
 		Publisher p = new Publisher(publisherName);
 		Category c = new Category(categoryName);
-		Book b = new Book(bookID,bookName, c.getCategoryID(), p.getPublisherID(),authors1);
-		Edition e = new Edition(bookID,isbn, price, pages, purchaseDate,
+		Book b = new Book(bookName, c.getCategoryID(), p.getPublisherID(),authors1);
+		Edition e = new Edition(b.getBookID(),isbn, price, pages, purchaseDate,
 				 edition,  rent, quantity, quantity); 
 		entityManager.persist(b);
 		

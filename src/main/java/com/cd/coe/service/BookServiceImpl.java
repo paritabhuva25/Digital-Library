@@ -26,11 +26,11 @@ public class BookServiceImpl implements BookService{
 		return dao.findBook(bookID);
 	}
 
-	public boolean addBook(int bookID,String bookName, String categoryName, Set<Author> authors1, String publisherName,
+	public boolean addBook(String bookName, String categoryName, Set<Author> authors1, String publisherName,
 			String isbn, double price, int pages, Date purchaseDate, int edition, double rent, int quantity) {
 		// TODO Auto-generated method stub
 		
-		dao.addBook(bookID,bookName, categoryName,authors1,  publisherName,
+		dao.addBook(bookName, categoryName,authors1,  publisherName,
 				isbn, price,pages,purchaseDate,edition,  rent,  quantity);
 		return true;
 	}

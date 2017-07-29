@@ -13,6 +13,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -107,40 +108,45 @@ public class AppController {
 	@RequestMapping(value = { "/add-book" }, method = RequestMethod.GET)
 	public String newBook(ModelMap model) {
 		Book book= new Book();
-		Publisher p = new Publisher();
-		Category c = new Category();
-		Edition e = new Edition();
+		//Publisher publisher = new Publisher();
+		Category category = new Category();
+		//Edition edition = new Edition();
+		System.out.println("in get method");
 		model.addAttribute("book", book);
-		model.addAttribute("publisher", p);
-		model.addAttribute("category", c);
-		model.addAttribute("edition", e);
+	//	model.addAttribute("publisher",publisher);
+		model.addAttribute("category", category);
+	//	model.addAttribute("edition", edition);
 		return "add-book";
 	}
 	
 	@RequestMapping(value = { "/add-book" }, method = RequestMethod.POST)
-	public String saveBook(@Valid Book book,@Valid Publisher p,@Valid Edition e,@Valid Category c, BindingResult result,
-			ModelMap model) {
+	public String saveBook(@ModelAttribute("book")Book book,BindingResult result/*,@ModelAttribute("publisher")Publisher publisher,BindingResult result2,
+			*/,@ModelAttribute("category")Category category,BindingResult result3/*,@ModelAttribute("edition")Edition edition,BindingResult result4,
+			*/,ModelMap model ) {
 
-		if (result.hasErrors()) {
-			return "fail-add-book";
-		}
-
+		if (result.hasErrors()||result3.hasErrors()) {
+			System.out.println("exception!");
+	        return "fail-add-book";
+	    }
+		System.out.println("here in post!!!!");
+		System.out.println(book);
+		System.out.println(category);
 		//int bookID,String bookName, String categoryName, Set<Author> authors1, String publisherName,
 		//String isbn, double price, int pages, Date purchaseDate, int edition, double rent, int quantity
-		boolean bookAdded = service2.addBook(book.getBookID(),book.getBookname(),c.getCategoryName(),book.getAuthors(),p.getPublisherName()
-										,e.getISBN(),e.getBookPrice(),e.getBookPage(),e.getPurchaseDate(),e.getEdition(),e.getRent(),e.getTotalQuantity());
+		boolean bookAdded = false;//service2.addBook(book.getBookname(),category.getCategoryName(),book.getAuthors(),publisher.getPublisherName()
+			//							,edition.getISBN(),edition.getBookPrice(),edition.getBookPage(),edition.getPurchaseDate(),edition.getEdition(),edition.getRent(),edition.getTotalQuantity());
 
 		if(bookAdded){
 //			model.put("user", user);
-			System.out.println("Success!!!!");
+			System.out.println("Success in adding book!!!!");
 			return "success-add-book";
 		}else{
-			System.out.println("Failure!!!!");
+			System.out.println("Failure adding book!!!!");
 			//String msg = "Incorrect User!";
 			//request.setAttribute("error-msg", msg);
 			//request.setAttribute("error", Boolean.TRUE);
 			//model.put("error", msg);
-			return "fail-add-book";
+			return "add-book";
 		}
 	}
 

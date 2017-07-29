@@ -18,7 +18,7 @@ public interface BookService {
 	
 	Book findBook(int bookID);
 	
-	boolean addBook(int bookID,String bookName, String categoryName, Set<Author> authors1, String publisherName,
+	boolean addBook(String bookName, String categoryName, Set<Author> authors1, String publisherName,
 			String isbn, double price, int pages, Date purchaseDate, int edition, double rent, int quantity);
 	
 	boolean issueBook(int bookID, int edition,int userID, Date issueDate, Date dueDate, double baseRent, int status);

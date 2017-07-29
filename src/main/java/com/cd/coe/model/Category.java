@@ -19,6 +19,11 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int categoryID;
 	
+	@Override
+	public String toString() {
+		return "Category [categoryID=" + categoryID + ", categoryName=" + categoryName + "]";
+	}
+
 	@Size(min=3, max=50)
 	@Column(name = "categoryName", nullable = true)
 	private String categoryName;

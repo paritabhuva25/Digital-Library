@@ -14,7 +14,7 @@ public interface BookDao {
 
 		public Book findBook(int bookID);
 
-		public boolean addBook(int bookID,String bookName, String categoryName, Set<Author> authors1, String publisherName,
+		public boolean addBook(String bookName, String categoryName, Set<Author> authors1, String publisherName,
 				String isbn, double price, int pages, Date purchaseDate, int edition, double rent, int quantity);
 		public void issuebook(int bookID, int edition, int userID, Date issueDate, Date dueDate, double baseRent,
 				int status);

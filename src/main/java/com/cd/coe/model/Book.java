@@ -27,15 +27,21 @@ public class Book {
 	
 	private String bookname;
 	
-	
-	private int categoryID;
+/*	
+	@Override
+	public String toString() {
+		return "Book [bookID=" + bookID + ", bookname=" + bookname + ", categoryID=" + categoryID + ", publisherID="
+				+ publisherID + ", authors=" + authors + "]";
+	}
+*/
+	//private int categoryID;
 	
 	
 	private int publisherID;
 	
 	
 	private Set<Author> authors;
-	
+	private Category category;
 	
 		
 	@Id
@@ -87,9 +93,9 @@ public class Book {
 		this.publisherID = publisherID;
 	}
 
-	public Book(int bookID, String bookname, int categoryID, int publisherID, Set<Author> authors) {
+	public Book(String bookname, int categoryID, int publisherID, Set<Author> authors) {
 		super();
-		this.bookID = bookID;
+//		this.bookID = bookID;
 		this.bookname = bookname;
 		this.categoryID = categoryID;
 		this.publisherID = publisherID;
@@ -97,10 +103,10 @@ public class Book {
 		
 	}
 
-
 	public Book() {
 		// TODO Auto-generated constructor stub
 	}
-	
-
 }
+
+
+
